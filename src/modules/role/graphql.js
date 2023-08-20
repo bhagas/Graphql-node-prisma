@@ -43,7 +43,7 @@ const resolvers= {
   Query: {
     roles: async (obj, args, context, info) => {
 
-      let dt = await db.$queryRaw('select * from roles where deleted is null');
+      let dt = await db.$queryRaw`select * from roles where deleted is null`;
       //bisa array return nya
       return {data: dt[0], status:200, message:'Success'};
        
@@ -51,7 +51,7 @@ const resolvers= {
     role: async (obj, args, context, info) =>
         {
            
-            let dt = await db.$queryRaw(`select * from roles where id= ${args.id}`);
+            let dt = await db.$queryRaw`select * from roles where id= ${args.id}`;
             //harus object return nya
             return dt[0];
         },

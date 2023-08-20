@@ -99,10 +99,10 @@ const resolvers= {
   Query: {
     users: async (obj, args, context, info) => {
       try {
-        let dt = await db.$queryRaw('select * from users where deleted is null');
+        let dt = await db.$queryRaw`select * from users where deleted is null`;
    
         for (let i = 0; i < dt.length; i++) {
-          dt[i].roles= await db.$queryRaw(`select b.id, b.code, b.role_name from role_pool a join roles b on a."roleId" = b.id where a."userId"= ${dt[i].id}`);
+          dt[i].roles= await db.$queryRaw`select b.id, b.code, b.role_name from role_pool a join roles b on a."roleId" = b.id where a."userId"= ${dt[i].id}`;
         }
         // info.cacheControl.setCacheHint({ maxAge: 10 });
         return {data: dt, status:200, message:'Success'};
@@ -115,7 +115,7 @@ const resolvers= {
     user: async (obj, args, context, info) =>
         {
            
-          let dt = await db.$queryRaw(`select * from Users where id= ${args.id}`);
+          let dt = await db.$queryRaw`select * from Users where id= ${args.id}`;
           //harus object return nya
           // info.cacheControl.setCacheHint({ maxAge: 0 });
             return dt[0];
@@ -154,12 +154,12 @@ Mutation:{
   login: async (_, {input})=>{
     try {
       
-      let dt = await db.$queryRaw(`select * from users where email= ${input.email} and deleted is null`);
+      let dt = await db.$queryRaw`select * from users where email= ${input.email} and deleted is null`;
      if(dt.length){
       let hasil = await bcrypt.compare(input.password, dt[0].password);
  
       if(hasil){
-        dt[0].roles= await db.$queryRaw(`select b.id, b.code, b.role_name from role_pool a join roles b on a."roleId" = b.id where a."userId"= ${dt[0].id}`);
+        dt[0].roles= await db.$queryRaw`select b.id, b.code, b.role_name from role_pool a join roles b on a."roleId" = b.id where a."userId"= ${dt[0].id}`;
    
         let token = await jwt.generate({id: dt[0].id}, '24h')
             return {
@@ -196,10 +196,10 @@ Mutation:{
     try {
       let user=await jwt.verify(token);
       if(user){
-        let dt = await db.$queryRaw(`select * from users where confirmation_code= ${token} and deleted is null`);
+        let dt = await db.$queryRaw`select * from users where confirmation_code= ${token} and deleted is null`;
         
         if(dt.length){
-         dt[0].roles= await db.$queryRaw(`select b.id, b.code, b.role_name from role_pool a join roles b on a."roleId" = b.id where a."userId"= ${dt[0].id}`);
+         dt[0].roles= await db.$queryRaw`select b.id, b.code, b.role_name from role_pool a join roles b on a."roleId" = b.id where a."userId"= ${dt[0].id}`;
        
          let pass = await bcrypt.gen(password);
      
