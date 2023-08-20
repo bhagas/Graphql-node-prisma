@@ -20,7 +20,7 @@ const httpServer = http.createServer(app);
 
 
   const server = new ApolloServer({
-    schema: buildSubgraphSchema(skema),
+    schema: skema,
     cache: 'bounded',
     csrfPrevention: true,
     plugins: [
