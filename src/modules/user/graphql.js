@@ -1,5 +1,4 @@
 import gql from'graphql-tag';
-import { v4 as uuidv4 } from'uuid';
 import jwt from'../../helper/jwt.js';
 import bcrypt from'../../helper/bcrypt.js';
 import GraphQLUpload from 'graphql-upload/GraphQLUpload.mjs';
@@ -126,9 +125,10 @@ Mutation:{
     try {
     //  let file = await saveFile(await image);
    
-      input.id=uuidv4()
+ 
       // input.password=await enkrip.hash(input.password)
       input.confirmation_code = await jwt.generate({id: input.id}, '1h');
+      delete input.id;
       // let html =`<h1>Invitation</h1>
       // <h2>Hello ${input.name}</h2>
       // <p>Transition has invited you, You can login using this email as username and password: ${input.password}</p>
@@ -280,7 +280,7 @@ Mutation:{
           }
         });
         for (let i = 0; i < roles.length; i++) {
-          roles[i].id = uuidv4();
+       
           roles[i].userId = idUser;
           
         }

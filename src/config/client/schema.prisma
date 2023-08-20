@@ -10,7 +10,7 @@ datasource db {
 
 
 model role_pool {
-  id        String    @id @db.VarChar(255)
+  id        String    @id @default(cuid())
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime? @db.Timestamptz(6)
@@ -21,7 +21,7 @@ model role_pool {
 }
 
 model roles {
-  id        String      @id @db.VarChar(255)
+  id        String      @id @default(cuid())
   role_name String      @db.VarChar(255)
   code      String?     @db.VarChar(255)
   createdAt DateTime     @default(now())
@@ -31,7 +31,7 @@ model roles {
 }
 
 model users {
-  id                String             @id @db.VarChar(255)
+  id                String             @id @default(cuid())
   name              String?            @db.VarChar(255)
   email             String?            @db.VarChar(255)
   password          String?            @db.VarChar(255)

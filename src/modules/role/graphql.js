@@ -2,7 +2,7 @@
 // import { QueryTypes } from'sequelize';
 import db from '../../config/koneksi.js'
 import gql from'graphql-tag';
-import { v4 as uuidv4 } from'uuid';
+
 const typeDefs=
   gql`
   extend type Query {
@@ -59,7 +59,7 @@ const resolvers= {
 Mutation:{
   createRole: async (_, {inputRole})=>{
     try {
-    inputRole.id=uuidv4()
+   
    
      await  db.roles.create({data:inputRole})
         return {

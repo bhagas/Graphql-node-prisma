@@ -4347,7 +4347,7 @@ export namespace Prisma {
   }
 
   export type role_poolCreateInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -4356,7 +4356,7 @@ export namespace Prisma {
   }
 
   export type role_poolUncheckedCreateInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -4383,7 +4383,7 @@ export namespace Prisma {
   }
 
   export type role_poolCreateManyInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -4408,7 +4408,7 @@ export namespace Prisma {
   }
 
   export type rolesCreateInput = {
-    id: string
+    id?: string
     role_name: string
     code?: string | null
     createdAt?: Date | string
@@ -4418,7 +4418,7 @@ export namespace Prisma {
   }
 
   export type rolesUncheckedCreateInput = {
-    id: string
+    id?: string
     role_name: string
     code?: string | null
     createdAt?: Date | string
@@ -4448,7 +4448,7 @@ export namespace Prisma {
   }
 
   export type rolesCreateManyInput = {
-    id: string
+    id?: string
     role_name: string
     code?: string | null
     createdAt?: Date | string
@@ -4475,7 +4475,7 @@ export namespace Prisma {
   }
 
   export type usersCreateInput = {
-    id: string
+    id?: string
     name?: string | null
     email?: string | null
     password?: string | null
@@ -4488,7 +4488,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedCreateInput = {
-    id: string
+    id?: string
     name?: string | null
     email?: string | null
     password?: string | null
@@ -4527,7 +4527,7 @@ export namespace Prisma {
   }
 
   export type usersCreateManyInput = {
-    id: string
+    id?: string
     name?: string | null
     email?: string | null
     password?: string | null
@@ -5098,7 +5098,7 @@ export namespace Prisma {
   }
 
   export type rolesCreateWithoutRole_poolInput = {
-    id: string
+    id?: string
     role_name: string
     code?: string | null
     createdAt?: Date | string
@@ -5107,7 +5107,7 @@ export namespace Prisma {
   }
 
   export type rolesUncheckedCreateWithoutRole_poolInput = {
-    id: string
+    id?: string
     role_name: string
     code?: string | null
     createdAt?: Date | string
@@ -5121,7 +5121,7 @@ export namespace Prisma {
   }
 
   export type usersCreateWithoutRole_poolInput = {
-    id: string
+    id?: string
     name?: string | null
     email?: string | null
     password?: string | null
@@ -5133,7 +5133,7 @@ export namespace Prisma {
   }
 
   export type usersUncheckedCreateWithoutRole_poolInput = {
-    id: string
+    id?: string
     name?: string | null
     email?: string | null
     password?: string | null
@@ -5214,7 +5214,7 @@ export namespace Prisma {
   }
 
   export type role_poolCreateWithoutRolesInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -5222,7 +5222,7 @@ export namespace Prisma {
   }
 
   export type role_poolUncheckedCreateWithoutRolesInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -5268,7 +5268,7 @@ export namespace Prisma {
   }
 
   export type role_poolCreateWithoutUsersInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -5276,7 +5276,7 @@ export namespace Prisma {
   }
 
   export type role_poolUncheckedCreateWithoutUsersInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -5310,7 +5310,7 @@ export namespace Prisma {
   }
 
   export type role_poolCreateManyRolesInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
@@ -5342,7 +5342,7 @@ export namespace Prisma {
   }
 
   export type role_poolCreateManyUsersInput = {
-    id: string
+    id?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     deletedAt?: Date | string | null
