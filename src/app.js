@@ -34,7 +34,7 @@ const httpServer = http.createServer(app);
   app.use(bodyParser.json());
   app.use( graphqlUploadExpress());
   app.use(
-    '/gpl',
+    '/gql',
 
     // cors(),
     expressMiddleware(server,
