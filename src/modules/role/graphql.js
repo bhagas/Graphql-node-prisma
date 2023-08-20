@@ -45,7 +45,8 @@ const resolvers= {
 
       let dt = await db.$queryRaw`select * from roles where deleted is null`;
       //bisa array return nya
-      return {data: dt[0], status:200, message:'Success'};
+    //   console.log(dt);
+      return {data: dt, status:200, message:'Success'};
        
     },
     role: async (obj, args, context, info) =>

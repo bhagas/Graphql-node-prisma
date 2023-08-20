@@ -274,7 +274,8 @@ Mutation:{
     try {
  
       const result = await db.$transaction(async (t) => {
-        await t.role_pool.delete({
+   
+        await t.role_pool.deleteMany({
           where: {
             userId:idUser
           }
