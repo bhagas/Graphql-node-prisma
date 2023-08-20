@@ -5,7 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 import GraphQLUpload from 'graphql-upload/GraphQLUpload.mjs';
 import saveFile from '../../helper/file.js';
 import enkrip from '../../helper/bcrypt.js'
-
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 export const typeDefs=
   gql`
   scalar Upload
@@ -63,14 +64,14 @@ export const resolvers= {
   Upload: GraphQLUpload,
   Query: {
       users: async () => {
-          let dt = await db.query('select * from users');
+          let dt = await prisma.$queryRaw('select * from users');
           //bisa array return nya
           return dt[0];
       },
       user: async (obj, args, context, info) =>
           {
               console.log(args);
-              let dt = await db.query(`select * from Users where id= '${args.id}'`);
+              let dt = await prisma.$queryRaw(`select * from Users where id= ${args.id}`);
               //harus object return nya
               return dt[0][0];
           },
@@ -82,7 +83,7 @@ export const resolvers= {
 
         input.id=uuidv4();
         input.password=await enkrip.hash(input.password)
-       await userModel.create(input)
+       await prisma.users.create({data:input})
           return {
               status: '200',
               pesan: 'Berhasil Simpan'
@@ -115,7 +116,11 @@ export const resolvers= {
      
     },
     updateUser: async (_, {id, input})=>{
-        console.log(id, input);
+        // console.log(id, input);
+        await prisma.users.create({
+          where: {id},
+          data:input
+        })
         return {
             status: '200',
             pesan: 'Berhasil Update'
