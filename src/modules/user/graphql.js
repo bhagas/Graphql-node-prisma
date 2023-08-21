@@ -23,7 +23,7 @@ const typeDefs=
     Deskripsi untuk user
     berisi tentang profil user
     """
-      users: usersResult
+      users: usersResult @rateLimit(limit: 1, duration: 15)
       "Query untuk user by id"
       user(id: ID!): User
   }
